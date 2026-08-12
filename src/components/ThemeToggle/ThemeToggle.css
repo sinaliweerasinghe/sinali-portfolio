@@ -1,0 +1,56 @@
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.toggle-track {
+  width: 52px;
+  height: 28px;
+  border-radius: 50px;
+  background: rgba(184, 132, 44, 0.15);
+  border: 1.5px solid rgba(184, 132, 44, 0.15);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .toggle-track {
+  background: rgba(184, 132, 44, 0.25);
+  border-color: rgba(184, 132, 44, 0.3);
+}
+
+.toggle-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-light));
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(184, 132, 44, 0.3);
+  transition: all 0.3s ease;
+}
+
+.toggle-icon {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.theme-toggle:hover .toggle-thumb {
+  box-shadow: 0 4px 20px rgba(184, 132, 44, 0.5);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active .toggle-thumb {
+  transform: scale(0.9);
+}

@@ -1,0 +1,17 @@
+:root {
+  /* Your Color Palette */
+  --primary-dark: #800000;    /* Deep Maroon */
+  --primary-medium: #633A2C;  /* Warm Brown */
+  --primary-gold: #B8842C;    /* Rich Gold */
+  --primary-gold-light: #B8860B; /* Golden Yellow */
+  --primary-cream: #E0D6B8;   /* Warm Cream */
+  
+  /* Derived Colors */
+  --text-primary: #E0D6B8;
+  --text-secondary: #B8842C;
+  --bg-dark: #1a0a0a;
+  --bg-medium: #2a1510;
+  --shadow-color: rgba(128, 0, 0, 0.3);
+  --gradient-main: linear-gradient(135deg, #800000, #633A2C, #B8842C);
+  --gradient-gold: linear-gradient(135deg, #B8842C, #B8860B, #E0D6B8);
+}
