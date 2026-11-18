@@ -13,6 +13,8 @@ export default function Education() {
   const [showPdfModal, setShowPdfModal] = useState(false);
   const [numPages, setNumPages] = useState(null);
   const [pdfError, setPdfError] = useState(false);
+  const [pdfFile, setPdfFile] = useState('/Python_for_Beginners_E-Certificate.pdf');
+  const [pdfTitle, setPdfTitle] = useState('Python For Beginners - Certificate');
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -22,6 +24,14 @@ export default function Education() {
   function onDocumentLoadError(error) {
     console.error('PDF load error:', error);
     setPdfError(true);
+  }
+
+  function openPdf(file, title) {
+    setPdfFile(file);
+    setPdfTitle(title);
+    setNumPages(null);
+    setPdfError(false);
+    setShowPdfModal(true);
   }
 
   // Animation variants for staggered children
@@ -118,7 +128,7 @@ export default function Education() {
                 networking, and software engineering principles.
               </p>
               <div className="edu-tags">
-                <span className="tag-progress">In Progress</span>
+                <span className="tag-progress">Completed</span>
                 <span className="tag-location">Sri Lanka</span>
               </div>
             </div>
@@ -201,12 +211,18 @@ export default function Education() {
               <div className="cert-icon">📄</div>
               <div className="cert-details">
                 <h4>Foundation of Project Management</h4>
-                <p className="cert-date">2026 Aug – Present</p>
+                <p className="cert-date">2026 Aug – 2026 Aug</p>
                 <span className="cert-description">
                   Learning project management fundamentals including agile methodologies, 
                   risk management, and stakeholder communication.
                 </span>
-                <button className="cert-btn" disabled>
+                <button 
+                  className="cert-btn active"
+                  onClick={() => openPdf(
+                    '/Foundations_of_Project_Management_E-Certificate.pdf',
+                    'Foundations of Project Management - Certificate'
+                  )}
+                >
                   View Certificate →
                 </button>
               </div>
@@ -232,7 +248,10 @@ export default function Education() {
                 </span>
                 <button 
                   className="cert-btn active"
-                  onClick={() => setShowPdfModal(true)}
+                  onClick={() => openPdf(
+                    '/Python_for_Beginners_E-Certificate.pdf',
+                    'Python For Beginners - Certificate'
+                  )}
                 >
                   View Certificate →
                 </button>
@@ -247,14 +266,14 @@ export default function Education() {
         <div className="pdf-modal-overlay" onClick={() => setShowPdfModal(false)}>
           <div className="pdf-modal" onClick={(e) => e.stopPropagation()}>
             <div className="pdf-modal-header">
-              <h3>📄 Python For Beginners - Certificate</h3>
+              <h3>📄 {pdfTitle}</h3>
               <button className="pdf-modal-close" onClick={() => setShowPdfModal(false)}>
                 ✕
               </button>
             </div>
             <div className="pdf-modal-body">
               <Document
-                file="/Python_for_Beginners_E-Certificate.pdf"
+                file={pdfFile}
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={onDocumentLoadError}
                 loading={<div className="pdf-loading">Loading PDF...</div>}
